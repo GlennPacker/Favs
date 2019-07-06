@@ -1,0 +1,16 @@
+<h1>Events</h1>
+
+<app-event-thumbnail
+  #thumbnail
+  [event]="events[0]"
+  (eventClick)="handleEventClicked($event)"
+
+>
+</app-event-thumbnail>
+
+<h3>
+  {{thumbnail.someProp}}
+</h3>
+
+<button (click)="thumbnail.sayHi()">test</button>
+
