@@ -5,3 +5,11 @@
 .well div {
   color: #bbb;
 }
+
+.thumbnail {
+  min-height: 250px;
+}
+
+.green {
+  color: green !important;
+}

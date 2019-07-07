@@ -14,9 +14,4 @@ export class EventThumbnailComponent {
   handleClick = () => {
     this.eventClick.emit(this.event.name);
   }
-
-  sayHi = () => {
-    console.log(1);
-    this.someProp++;
-  }
 }

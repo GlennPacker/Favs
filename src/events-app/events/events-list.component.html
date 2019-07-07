@@ -1,16 +1,15 @@
 <h1>Events</h1>
+<hr/>
 
-<app-event-thumbnail
-  #thumbnail
-  [event]="events[0]"
-  (eventClick)="handleEventClicked($event)"
-
->
-</app-event-thumbnail>
-
-<h3>
-  {{thumbnail.someProp}}
-</h3>
-
-<button (click)="thumbnail.sayHi()">test</button>
-
+<div class="row">
+  <div
+    class="col-md-5"
+    *ngFor="let event of events"
+  >
+    <app-event-thumbnail
+      [event]="event"
+      (eventClick)="handleEventClicked($event)"
+    >
+    </app-event-thumbnail>
+  </div>
+</div>
