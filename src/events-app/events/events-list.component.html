@@ -5,6 +5,7 @@
   <div
     class="col-md-5"
     *ngFor="let event of events"
+    [routerLink]="['/events', event.id]"
   >
     <app-event-thumbnail
       (click)="handleEventClicked(event)"
