@@ -1,28 +1,53 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {RouterModule} from '@angular/router';
 
-import { EventsAppComponent } from './events-app.component';
-import { EventsListComponent } from './events/events-list.component';
-import {EventThumbnailComponent} from './event-thumbnail/event-thumbnail.component';
-import {NavbarComponent} from './nav/navbar.component';
+import {
+  Error404Component,
+  EventCreateComponent,
+  EventDetailsComponent,
+  EventsListResolverService,
+  EventsListComponent,
+  EventThumbnailComponent,
+  EventRouteActivatorService,
+  EventService,
+  NavbarComponent,
+  ToastrService,
+} from './index';
 
-import { EventService } from './shared/event.service';
-import {ToastrService} from './shared/toastr.service';
+
+import {appRoutes} from '../routes';
+import {checkDirtyState} from './event-create/event-deactivator-service';
+import {EventsAppComponent} from './events-app.component';
+
 
 @NgModule({
   declarations: [
+    Error404Component,
     EventsAppComponent,
+    EventCreateComponent,
     EventsListComponent,
     EventThumbnailComponent,
-    NavbarComponent
+    NavbarComponent,
+    EventDetailsComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [
+    EventsListResolverService,
+    EventRouteActivatorService,
     EventService,
-    ToastrService
+    ToastrService,
+    {
+      provide: 'canDeactivateCreateEvent',
+      useValue: checkDirtyState
+    }
   ],
   bootstrap: [EventsAppComponent]
 })
+
 export class EventsAppModule { }
+
+
