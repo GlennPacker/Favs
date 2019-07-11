@@ -1,0 +1,9 @@
+em {
+  float: right;
+  color: #E05C65;
+}
+
+input.error  {background-color: #bd362f;}
+.error ::-webkit-input-placeholder {
+  color: #999
+}
