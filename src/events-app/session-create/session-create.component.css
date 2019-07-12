@@ -1,6 +1,4 @@
 em { float:right; color: #bd362f}
-.error select,
-.error textarea,
 .error input {
   background-color: #bd362f;
 }

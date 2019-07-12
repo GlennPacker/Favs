@@ -31,3 +31,9 @@ button {
 .toast-warning {
   background-color: #f89406;
 }
+
+.error-msg {
+  color: #bd362f;
+}
+
+
