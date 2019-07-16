@@ -10,6 +10,7 @@
     "contextual-lifecycle": true,
     "curly": [true, "as-needed"],
     "directive-class-suffix": true,
+    "component-selector": false,
     "directive-selector": [
       true,
       "attribute",

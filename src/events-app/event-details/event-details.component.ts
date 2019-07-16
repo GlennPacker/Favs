@@ -10,6 +10,7 @@ import {IEvent} from '../shared/event';
 
 export class EventDetailsComponent implements OnInit {
   event: IEvent;
+  addMode = false;
 
   constructor(private eventService: EventService, private route: ActivatedRoute, private router: Router) {}
 
@@ -19,5 +20,20 @@ export class EventDetailsComponent implements OnInit {
 
   editEvent() {
     this.router.navigate(['/events/edit', this.route.snapshot.params.id]);
+  }
+
+  addSession() {
+    this.addMode = true;
+  }
+
+  saveNewSession(newSession) {
+    newSession.id = Math.max.apply(null, this.event.sessions.map(session => session.id)) + 1;
+    this.event.sessions.push(newSession);
+    this.eventService.updateEvent(this.event);
+    this.addMode = false;
+  }
+
+  cancelNewSession() {
+    this.addMode = false;
   }
 }

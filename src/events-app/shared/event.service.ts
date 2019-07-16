@@ -330,4 +330,9 @@ export class EventService {
     data.sessions = [];
     this.events.push(data);
   }
+
+  updateEvent(data: IEvent) {
+    const index = this.events.findIndex(r => r.id === data.id);
+    this.events[index] = data;
+  }
 }
