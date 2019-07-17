@@ -11,6 +11,7 @@ import {IEvent} from '../shared/event';
 export class EventDetailsComponent implements OnInit {
   event: IEvent;
   addMode = false;
+  filterBy = 'All';
 
   constructor(private eventService: EventService, private route: ActivatedRoute, private router: Router) {}
 
@@ -26,6 +27,9 @@ export class EventDetailsComponent implements OnInit {
     this.addMode = true;
   }
 
+  applyFilter(filterBy : string) {
+    this.filterBy = filterBy;
+  }
   saveNewSession(newSession) {
     newSession.id = Math.max.apply(null, this.event.sessions.map(session => session.id)) + 1;
     this.event.sessions.push(newSession);
@@ -36,4 +40,5 @@ export class EventDetailsComponent implements OnInit {
   cancelNewSession() {
     this.addMode = false;
   }
+
 }
