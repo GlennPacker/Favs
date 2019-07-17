@@ -24,9 +24,26 @@ export class EventCreateComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    // tslint:disable-next-line:curly
     if (this.route.snapshot.params.id) {
       this.event = this.eventService.find(+this.route.snapshot.params.id);
+      // tslint:disable-next-line:curly
+    } else {
+      this.event = {
+        id: null,
+        name: null,
+        date: null,
+        online: null,
+        price: null,
+        time: null,
+        imageUrl: null,
+        sessions: [],
+        location: {
+          address: null,
+          city: null,
+          country: null
+        },
+      };
     }
   }
 }

@@ -12,7 +12,9 @@ import {
   EventRouteActivatorService,
   EventService,
   NavbarComponent,
-  ToastrService, ProfileComponent, LoginComponent
+  ToastrService,
+  ProfileComponent,
+  LoginComponent
 } from './index';
 
 import { appRoutes } from '../routes';
@@ -22,6 +24,8 @@ import {AuthService} from './shared/auth.service';
 import {CommonModule} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {SessionCreateComponent} from './session-create/session-create.component';
+import {SessionListComponent} from './session-list/session-list.component';
+import {CollapsibleWellComponent} from './collapible-well/collapsible-well.component';
 
 
 @NgModule({
@@ -32,10 +36,12 @@ import {SessionCreateComponent} from './session-create/session-create.component'
     EventsListComponent,
     EventThumbnailComponent,
     NavbarComponent,
+    SessionListComponent,
     EventDetailsComponent,
     ProfileComponent,
     LoginComponent,
     SessionCreateComponent,
+    CollapsibleWellComponent
   ],
   imports: [
     CommonModule,
