@@ -12,9 +12,9 @@ import {
   EventRouteActivatorService,
   EventService,
   NavbarComponent,
-  ToastrService,
   ProfileComponent,
-  LoginComponent
+  LoginComponent,
+  TOASTR_TOKEN
 } from './index';
 
 import { appRoutes } from '../routes';
@@ -28,6 +28,7 @@ import {SessionListComponent} from './session-list/session-list.component';
 import {CollapsibleWellComponent} from './collapible-well/collapsible-well.component';
 import {DurationPipe} from './shared/duration.pipe';
 
+declare let toastr: any
 
 @NgModule({
   declarations: [
@@ -56,7 +57,10 @@ import {DurationPipe} from './shared/duration.pipe';
     EventsListResolverService,
     EventRouteActivatorService,
     EventService,
-    ToastrService,
+    {
+      provide: TOASTR_TOKEN,
+      useValue: toastr
+    },
     AuthService,
   ],
   bootstrap: [EventsAppComponent]
