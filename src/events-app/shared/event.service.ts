@@ -8,7 +8,7 @@ export class EventService {
     {
       id: 1,
       name: 'Angular Connect',
-      date: new Date('26/9/2036'),
+      date: new Date('01/09/2036'),
       time: '10:00 am',
       price: 599.99,
       imageUrl: '/assets/images/angularconnect-shield.png',
@@ -86,7 +86,7 @@ export class EventService {
     {
       id: 2,
       name: 'ng-nl',
-      date: new Date('15/4/2037'),
+      date: new Date('1/14/2037'),
       time: '9:00 am',
       price: 950.00,
       imageUrl: '/assets/images/ng-nl.png',
