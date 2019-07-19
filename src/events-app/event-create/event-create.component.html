@@ -5,7 +5,7 @@
 >
   <form #newEventForm="ngForm" (ngSubmit)="saveEvent(newEventForm.value)" autocomplete="off" novalidate>
     <div class="form-group" [ngClass]="{'error': newEventForm.controls.name?.invalid && newEventForm.controls.name?.touched}">
-      <label for="eventName">Event Name:</label>
+      <label for="name">Event Name:</label>
       <em *ngIf="newEventForm.controls.name?.invalid && (newEventForm.controls.name?.touched)">Required</em>
       <input [(ngModel)]="event.name" name="name" required id="name" type="text" class="form-control" placeholder="Name of your event..." />
     </div>
@@ -25,7 +25,12 @@
       <input [(ngModel)]="event.price" name="price" required id="eventPrice" type="text" type="number" class="form-control" placeholder="event price..." />
     </div>
 
-    <div ngModelGroup="location" *ngIf="event.location" validateLocation>
+    <div
+      ngModelGroup="location"
+      #locationGroup="ngModelGroup"
+      *ngIf="event.location"
+      validateLocation
+    >
       <div class="form-group">
         <label for="address">Event Location:</label>
         <input [(ngModel)]="event.location.address" name="address" id="address" type="text" class="form-control" placeholder="Address of event..." />
@@ -42,7 +47,16 @@
 
     <div class="form-group">
       <label for="onlineUrl">Online Url:</label>
-      <input [(ngModel)]="event.onlineUrl" name="onlineUrl" id="onlineUrl" type="text" class="form-control" placeholder="Online Url..." />
+      <input
+        [(ngModel)]="event.online"
+        name="onlineUrl"
+        id="onlineUrl"
+        type="text"
+        class="form-control"
+        placeholder="Online Url..."
+
+      />
+      (change)="locationGroup.control.controls.address.updateValueAndValidity()"
     </div>
     <div class="form-group" [ngClass]="{'error': newEventForm.controls.imageUrl?.invalid && newEventForm.controls.imageUrl?.touched}">
       <label for="imageUrl">Image:</label>
@@ -55,7 +69,7 @@
       />
     </div>
 
-    <button type="submit" class="btn btn-primary">Save</button>
-    <button type="button" [disabled]="newEventForm.invalid" class="btn btn-default" (click)="handleCancelClick()">Cancel</button>
+    <button type="submit" [disabled]="newEventForm.invalid" class="btn btn-primary">Save</button>
+    <button type="button" class="btn btn-default" (click)="handleCancelClick()">Cancel</button>
   </form>
 </div>
