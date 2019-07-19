@@ -1,0 +1,20 @@
+<div
+  class="votingWidgetContainer pointable"
+  (click)="onClick()"
+>
+  <div class="well votingWidget">
+    <div class="votingButton">
+      <i
+        *ngIf="authService.isAuthenticated()"
+        class="glyphicon glyphicon-heart"
+        [style.color]="iconColor"
+      >
+      </i>
+      <i *ngIf="!authService.isAuthenticated()" class="glyphicon glyphicon-heart-empty"></i>
+    </div>
+    <div class="badge badge-inverse votingCount">
+      <div>{{count}}</div>
+    </div>
+  </div>
+</div>
+

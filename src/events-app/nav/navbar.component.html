@@ -45,12 +45,18 @@
           </li>
         </ul>
       </div>
-      <form id="searchForm" class="navbar-form navbar-right">
+      <form
+        id="searchForm"
+        class="navbar-form navbar-right"
+        (ngSubmit)="doSearch(searchFor)"
+      >
         <div class="form-group">
           <input
             type="text"
             class="form-control"
             placeholder="Search Sessions"
+            name="searchFor"
+            [(ngModel)]="searchFor"
           />
         </div>
         <button class="btn btn-default">
