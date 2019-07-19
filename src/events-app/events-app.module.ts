@@ -29,7 +29,7 @@ import {CollapsibleWellComponent} from './collapible-well/collapsible-well.compo
 import {DurationPipe} from './shared/duration.pipe';
 import {UpvoteComponent} from './upvote/upvote.component';
 import {VoterService} from './shared/voter.service';
-import {LocationValidatorDirective} from './event-create/location-validator.directive';
+import {LocationValidator} from './event-create/location-validator.directive';
 
 declare let toastr: any
 
@@ -49,7 +49,7 @@ declare let toastr: any
     CollapsibleWellComponent,
     DurationPipe,
     UpvoteComponent,
-    LocationValidatorDirective,
+    LocationValidator,
   ],
   imports: [
     CommonModule,
