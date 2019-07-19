@@ -27,6 +27,9 @@ import {SessionCreateComponent} from './session-create/session-create.component'
 import {SessionListComponent} from './session-list/session-list.component';
 import {CollapsibleWellComponent} from './collapible-well/collapsible-well.component';
 import {DurationPipe} from './shared/duration.pipe';
+import {UpvoteComponent} from './upvote/upvote.component';
+import {VoterService} from './shared/voter.service';
+import {LocationValidatorDirective} from './event-create/location-validator.directive';
 
 declare let toastr: any
 
@@ -44,7 +47,9 @@ declare let toastr: any
     LoginComponent,
     SessionCreateComponent,
     CollapsibleWellComponent,
-    DurationPipe
+    DurationPipe,
+    UpvoteComponent,
+    LocationValidatorDirective,
   ],
   imports: [
     CommonModule,
@@ -62,6 +67,7 @@ declare let toastr: any
       useValue: toastr
     },
     AuthService,
+    VoterService
   ],
   bootstrap: [EventsAppComponent]
 })

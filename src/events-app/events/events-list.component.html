@@ -7,10 +7,6 @@
     *ngFor="let event of events"
     [routerLink]="['/events', event.id]"
   >
-<!--    (click)="handleEventClicked(event)" (eventClick)="handleEventClicked($event)"-->
-    <app-event-thumbnail
-      [event]="event"
-    >
-    </app-event-thumbnail>
+    <app-event-thumbnail [event]="event"></app-event-thumbnail>
   </div>
 </div>
