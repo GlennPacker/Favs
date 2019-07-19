@@ -30,6 +30,7 @@ import {DurationPipe} from './shared/duration.pipe';
 import {UpvoteComponent} from './upvote/upvote.component';
 import {VoterService} from './shared/voter.service';
 import {LocationValidator} from './event-create/location-validator.directive';
+import {HttpClientModule} from '@angular/common/http';
 
 declare let toastr: any
 
@@ -57,6 +58,7 @@ declare let toastr: any
     BrowserModule,
     RouterModule.forRoot(appRoutes),
     ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [
     EventsListResolverService,
