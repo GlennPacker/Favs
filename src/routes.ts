@@ -3,10 +3,10 @@ import { EventsListComponent } from './events-app/events/events-list.component';
 import { EventDetailsComponent } from './events-app/event-details/event-details.component';
 import { EventCreateComponent } from './events-app/event-create/event-create.component';
 import { Error404Component } from './events-app/errors/error-404.component';
-import { EventRouteActivatorService } from './events-app/event-details/event-route-activator.service';
 import { EventsListResolverService } from './events-app/events/events-list-resolver.service';
 import {LoginComponent, ProfileComponent} from './events-app/user';
 import {SessionCreateComponent} from './events-app/session-create/session-create.component';
+import {EventResolverService} from './events-app/events/event-resolver.service';
 
 export const appRoutes: Routes = [
   {
@@ -30,12 +30,8 @@ export const appRoutes: Routes = [
   {
     path: 'events/:id',
     component: EventDetailsComponent,
-    canActivate: [EventRouteActivatorService]
+    resolve: { event: EventResolverService }
   },
-  // {
-  //   path: 'user',
-  //   loadChildren: './events-app/user/user.module#UserModule'
-  // },
   {
     path: 'user/profile',
     component: ProfileComponent

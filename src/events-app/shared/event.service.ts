@@ -2,7 +2,7 @@ import {EventEmitter, Injectable} from '@angular/core';
 import {Observable, of, Subject} from 'rxjs';
 import {IEvent} from './event';
 import {ISession} from './ISession';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHandler, HttpHeaders} from '@angular/common/http';
 import {catchError} from 'rxjs/operators';
 
 @Injectable()
@@ -326,17 +326,23 @@ export class EventService {
   get(): Observable<IEvent[]> {
     return this.http
       .get<IEvent[]>('/api/events')
-      .pipe(catchError(this.handleError<IEvent[]>('getEvents', [])))
+      .pipe(catchError(this.handleError<IEvent[]>('get', [])))
   }
 
-  find(id: number): IEvent {
-    return this.events.find(item => item.id === id);
+  find(id: number): Observable<IEvent> {
+    return this.http
+      .get<IEvent>('api/events/' + id)
+      .pipe(catchError(this.handleError<IEvent>('find')))
   }
 
   addEvent(data: IEvent) {
-    data.id = Math.max(...this.events.map(item => item.id)) + 1;
-    data.sessions = [];
-    this.events.push(data);
+    // data.id = Math.max(...this.events.map(item => item.id)) + 1;
+    // data.sessions = [];
+    // this.events.push(data);
+    let options = { headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })}
+    this.http.post('/events', data, options)
   }
 
   updateEvent(data: IEvent) {

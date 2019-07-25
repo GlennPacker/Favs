@@ -9,7 +9,6 @@ import {
   EventsListResolverService,
   EventsListComponent,
   EventThumbnailComponent,
-  EventRouteActivatorService,
   EventService,
   NavbarComponent,
   ProfileComponent,
@@ -31,6 +30,7 @@ import {UpvoteComponent} from './upvote/upvote.component';
 import {VoterService} from './shared/voter.service';
 import {LocationValidator} from './event-create/location-validator.directive';
 import {HttpClientModule} from '@angular/common/http';
+import {EventResolverService} from './events/event-resolver.service';
 
 declare let toastr: any
 
@@ -62,14 +62,14 @@ declare let toastr: any
   ],
   providers: [
     EventsListResolverService,
-    EventRouteActivatorService,
     EventService,
     {
       provide: TOASTR_TOKEN,
       useValue: toastr
     },
     AuthService,
-    VoterService
+    VoterService,
+    EventResolverService
   ],
   bootstrap: [EventsAppComponent]
 })

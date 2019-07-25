@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {IEvent} from '../shared/event';
 import {EventService} from '../shared';
+import {catchError} from 'rxjs/operators';
 
 @Component({
   templateUrl: './event-create.component.html',
@@ -26,7 +27,9 @@ export class EventCreateComponent implements OnInit {
   ngOnInit() {
     // tslint:disable-next-line:curly
     if (this.route.snapshot.params.id) {
-      this.event = this.eventService.find(+this.route.snapshot.params.id);
+      this.eventService.find(+this.route.snapshot.params.id).subscribe(event => {
+        this.event = event;
+      });
       // tslint:disable-next-line:curly
     } else {
       this.event = {
